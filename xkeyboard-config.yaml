@@ -1,0 +1,37 @@
+Name: xkeyboard-config
+Summary: Alternative xkb data files
+Version: 1.8
+Release: 1
+Group: System/X11
+License: MIT
+URL: http://www.x.org
+Sources:
+    - http://xlibs.freedesktop.org/xkbdesc/%{name}-%{version}.tar.bz2
+Description: Alternative xkb data files.
+
+PkgConfigBR:
+    - xorg-macros
+PkgBR:
+    - pkgconfig
+    - xkbcomp
+    - perl(XML::Parser)
+    - gettext
+    - intltool
+Provides:
+    - xkbdata
+Obsoletes:
+    - xorg-x11-xkbdata
+ConfigOptions:
+    - --enable-compat-rules
+    - --with-xkb-base=%{_datadir}/X11/xkb
+    - --disable-xkbcomp-symlink
+    - --with-xkb-rules-symlink=xorg
+Patches:
+    - fix-rx51-enter.patch
+    - n950-support.patch
+    - n950-makefile.in-manual-fix.patch
+BuildArch: noarch
+NoAutoLocale: True
+FilesInput: files.list
+RunFdupes: 
+    - /usr/share/X11

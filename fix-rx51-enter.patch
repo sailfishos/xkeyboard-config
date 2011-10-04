@@ -1,0 +1,15 @@
+diff -ru xkeyboard-config-1.8/symbols/nokia_vndr/rx-51 xkeyboard-config-1.8-nokiafix/symbols/nokia_vndr/rx-51
+--- xkeyboard-config-1.8/symbols/nokia_vndr/rx-51	2009-12-11 01:44:36.000000000 +0100
++++ xkeyboard-config-1.8-nokiafix/symbols/nokia_vndr/rx-51	2011-05-13 09:43:26.843566962 +0200
+@@ -423,9 +423,9 @@
+     key <TAB>	{ [	Tab		] };
+ 
+     // broken UI spec.
+-    key <RTRN>	{ [	KP_Enter	] };
++    key <RTRN>	{ [	Return		] };
+ 
+-    key <KPEN>	{ [	Return		] };
++    key <KPEN>	{ [	KP_Enter	] };
+     key <ESC>	{ [	Escape		] };
+ 
+     key <FK01>	{ [	F1	] };

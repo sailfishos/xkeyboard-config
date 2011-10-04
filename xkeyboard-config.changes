@@ -1,0 +1,21 @@
+* Wed Jul 06 2011 Marko Saukko <marko.saukko@cybercom.com> - 1.8
+- Added 2 patches by Markus Lehtonen to add RM-680 keymap for N950.
+
+* Fri May 13 2011 Carsten Munk <carsten@maemo.org> - 1.8
+- Add patch to fix RX-51 enter problem, BMC#15035
+  by vesa-matti.hartikainen@nokia.com
+
+* Sat Apr 10 2010 Anas Nashif <anas.nashif@intel.com> - 1.8
+- Fixed rpmlint errors
+
+* Fri Feb 05 2010 Li Peng <peng.li@intel.com> 1.8
+- update to 1.8
+
+* Wed Dec 02 2009 Li Peng <peng.li@intel.com> 1.7
+- update to 1.7
+
+* Wed Apr 22 2009 Zhu Yanhai<yanhai.zhu@intel.com> 1.5
+- update to 1.5
+
+* Tue Dec 30 2008 Peng Li <peng.li@intel.com> 1.4
+- update to 1.4
