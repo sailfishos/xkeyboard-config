@@ -1,7 +1,0 @@
-<package project="Mer:Trunk:Base" name="xkeyboard-config">
-  <title>xkeyboard-config alternative xkb data files</title>
-  <description>xkeyboard-config alternative xkb data files
-
-</description>
-  <url>http://www.x.org</url>
-</package>
