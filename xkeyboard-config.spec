@@ -18,6 +18,7 @@ Source100:  xkeyboard-config.yaml
 Patch0:     fix-rx51-enter.patch
 Patch1:     n950-support.patch
 Patch2:     n950-makefile.in-manual-fix.patch
+Patch3:     n810-support.patch
 BuildRequires:  pkgconfig(xorg-macros)
 BuildRequires:  pkgconfig
 BuildRequires:  xkbcomp
@@ -43,6 +44,8 @@ Alternative xkb data files.
 %patch1 -p1
 # n950-makefile.in-manual-fix.patch
 %patch2 -p1
+# n810-support.patch
+%patch3 -p1
 # >> setup
 # << setup
 

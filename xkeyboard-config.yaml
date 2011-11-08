@@ -30,6 +30,7 @@ Patches:
     - fix-rx51-enter.patch
     - n950-support.patch
     - n950-makefile.in-manual-fix.patch
+    - n810-support.patch
 BuildArch: noarch
 NoAutoLocale: True
 FilesInput: files.list

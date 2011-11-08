@@ -1,3 +1,7 @@
+* Wed Nov 09 2011 Chris Leach <cxl000@hotmail.com> - 1.8
+- Added 1 patch by Chris Leach to update RX-44 symbol keymap
+  and add nokiarx44 geometry for N810.
+
 * Wed Jul 06 2011 Marko Saukko <marko.saukko@cybercom.com> - 1.8
 - Added 2 patches by Markus Lehtonen to add RM-680 keymap for N950.
 
