@@ -1,3 +1,6 @@
+* Tue Dec 13 2011 Marko Saukko <marko.saukko@cybercom.com> - 2.0
+- Updated to version 2.0
+
 * Wed Nov 09 2011 Chris Leach <cxl000@hotmail.com> - 1.8
 - Added 1 patch by Chris Leach to update RX-44 symbol keymap
   and add nokiarx44 geometry for N810.

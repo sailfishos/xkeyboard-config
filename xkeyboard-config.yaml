@@ -1,6 +1,6 @@
 Name: xkeyboard-config
 Summary: Alternative xkb data files
-Version: 1.8
+Version: 2.0
 Release: 1
 Group: System/X11
 License: MIT
@@ -36,3 +36,9 @@ NoAutoLocale: True
 FilesInput: files.list
 RunFdupes: 
     - /usr/share/X11
+
+SubPackages:
+    - Name: devel
+      Group: System/X11
+      Summary: Devel package for alternative xkb data files
+      Description: Development files for %{name}.
