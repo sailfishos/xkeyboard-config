@@ -1,12 +1,12 @@
 Name: xkeyboard-config
 Summary: Alternative xkb data files
-Version: 2.0
+Version: 2.5.1
 Release: 1
 Group: System/X11
 License: MIT
-URL: http://www.x.org
+URL: http://www.freedesktop.org/wiki/Software/XKeyboardConfig#Releases
 Sources:
-    - http://xlibs.freedesktop.org/xkbdesc/%{name}-%{version}.tar.bz2
+    - http://xorg.freedesktop.org/archive/individual/data/%{name}-%{version}.tar.bz2
 Description: Alternative xkb data files.
 
 PkgConfigBR:
@@ -26,6 +26,7 @@ ConfigOptions:
     - --with-xkb-base=%{_datadir}/X11/xkb
     - --disable-xkbcomp-symlink
     - --with-xkb-rules-symlink=xorg
+    - --disable-runtime-deps
 Patches:
     - fix-rx51-enter.patch
     - n950-support.patch
