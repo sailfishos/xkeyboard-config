@@ -1,7 +1,8 @@
-From e49a3473d264783b612be17635cfb4427171ce6b Mon Sep 17 00:00:00 2001
+From 5389664db203684b8ecd610a174234bac7369f98 Mon Sep 17 00:00:00 2001
 From: Joona Petrell <joona.petrell@jollamobile.com>
 Date: Tue, 3 Oct 2017 17:12:08 +0300
-Subject: [PATCH 6/6] [sbj] Map Select key. Contributes to JB#39965
+Subject: [PATCH xkeyboard-config 4/4] [sbj] Map Select key. Contributes to
+ JB#39965
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
 ---
@@ -32,5 +33,5 @@ index 6c378eb..dd7f31e 100644
 +    key <I361>  { [     Select                                                          ] };
  };
 -- 
-1.8.3-rc3
+2.24.1
 

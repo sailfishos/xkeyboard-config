@@ -1,8 +1,8 @@
-From 33e5a111a46a198f9e1b37b8df4509dd4acbca1c Mon Sep 17 00:00:00 2001
+From 32c91fae6151e4a849e0d2a89498a65f435bdd17 Mon Sep 17 00:00:00 2001
 From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
 Date: Wed, 27 Sep 2017 17:28:25 +0300
-Subject: [PATCH 5/6] [upstream] Map camera focus and snapshot keys.
- Contributes to MER#1817
+Subject: [PATCH xkeyboard-config 3/4] [upstream] Map camera focus and snapshot
+ keys. Contributes to MER#1817
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
 ---
@@ -36,5 +36,5 @@ index 16244cf..6c378eb 100644
 +    key <I774>  { [     XF86WebCam                                                      ] };
  };
 -- 
-1.8.3-rc3
+2.24.1
 

@@ -1,7 +1,8 @@
-From c31a1d577b87236a7cd10bbd38d63de143638576 Mon Sep 17 00:00:00 2001
+From ccf29588bd4d9d0eb58917bf33166ab92328afe3 Mon Sep 17 00:00:00 2001
 From: Matti Kosola <matti.kosola@jolla.com>
-Date: Mon, 2 Mar 2020 14:25:20 +0000
-Subject: [PATCH 1/6] build without docs so we don't require xorg macros
+Date: Fri, 6 Mar 2020 10:34:16 +0200
+Subject: [PATCH xkeyboard-config 1/4] build without docs so we don't require
+ xorg macros
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
 ---
@@ -10,7 +11,7 @@ Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
  2 files changed, 1 insertion(+), 12 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index e0b3168..2c789d6 100644
+index 4cc8254..f2e934e 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -1,6 +1,6 @@
@@ -22,7 +23,7 @@ index e0b3168..2c789d6 100644
  pkgconfigdir = $(datadir)/pkgconfig
  pkgconfig_DATA = xkeyboard-config.pc
 diff --git a/configure.ac b/configure.ac
-index 51f070c..cdbb40a 100644
+index 3c42ad0..833f4f8 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -3,15 +3,6 @@ AC_CONFIG_SRCDIR(rules/base.xml.in)
@@ -41,7 +42,7 @@ index 51f070c..cdbb40a 100644
  AC_SUBST(VERSION)
  
  AC_ARG_WITH( xkb_base,
-@@ -103,8 +94,6 @@ symbols/sun_vndr/Makefile
+@@ -104,8 +95,6 @@ symbols/sun_vndr/Makefile
  symbols/xfree68_vndr/Makefile
  types/Makefile
  xkeyboard-config.pc
@@ -51,5 +52,5 @@ index 51f070c..cdbb40a 100644
  
  echo '***********************************************************'
 -- 
-1.8.3-rc3
+2.24.1
 
