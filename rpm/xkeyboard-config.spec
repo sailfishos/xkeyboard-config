@@ -6,8 +6,14 @@ Release:    1
 Group:      System/X11
 License:    MIT
 BuildArch:  noarch
-URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig#Releases
-Source0:    http://xorg.freedesktop.org/archive/individual/data/%{name}-%{version}.tar.bz2
+URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
+Source0:    %{name}-%{version}.tar.bz2
+Patch0:     0001-build-without-docs-so-we-don-t-require-xorg-macros.patch
+Patch1:     0002-sbj-Added-sbj-keymap-for-Jolla-phone.-Fixes-MER-1040.patch
+Patch2:     0003-sbj-sbj-keymap-for-Jolla-phone-rather-based-in-pc105.patch
+Patch3:     0004-sbj-Workaround-devices-with-bad-headset-event-on-Sai.patch
+Patch4:     0005-upstream-Map-camera-focus-and-snapshot-keys.-Contrib.patch
+Patch5:     0006-sbj-Map-Select-key.-Contributes-to-JB-39965.patch
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  gettext
 BuildRequires:  intltool
@@ -28,7 +34,7 @@ Development files for %{name}.
 
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 

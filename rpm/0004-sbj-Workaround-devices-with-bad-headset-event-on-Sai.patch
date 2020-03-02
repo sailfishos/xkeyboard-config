@@ -1,0 +1,42 @@
+From bd162b7834f43dfc1f0648547b606a34c72dff61 Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
+Date: Fri, 15 Jan 2016 15:48:49 +0200
+Subject: [PATCH 4/6] [sbj] Workaround devices with bad headset event on
+ Sailfish. Contributes to JB#33503
+
+Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
+---
+ symbols/inet           | 4 +++-
+ symbols/jolla_vndr/sbj | 3 +++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/symbols/inet b/symbols/inet
+index 839439a..d5f606e 100644
+--- a/symbols/inet
++++ b/symbols/inet
+@@ -200,7 +200,9 @@ xkb_symbols "evdev" {
+     key <I231>   {      [ Cancel                ]       };
+     key <I232>   {      [ XF86MonBrightnessDown ]       };
+     key <I233>   {      [ XF86MonBrightnessUp   ]       };
+-    key <I234>   {      [ XF86AudioMedia        ]       };
++// HACK: disabled to allow Jolla layout to define different mapping.
++// TODO: there's likely a better way to keep this and allow override.
++//    key <I234>   {      [ XF86AudioMedia        ]       };
+     key <I235>   {      [ XF86Display           ]       };
+     key <I236>   {      [ XF86KbdLightOnOff     ]       }; // KEY_KBDILLUMTOGGLE
+     key <I237>   {      [ XF86KbdBrightnessDown ]       }; // KEY_KBDILLUMDOWN
+diff --git a/symbols/jolla_vndr/sbj b/symbols/jolla_vndr/sbj
+index d2388c3..16244cf 100644
+--- a/symbols/jolla_vndr/sbj
++++ b/symbols/jolla_vndr/sbj
+@@ -54,4 +54,7 @@ xkb_symbols "common-keys" {
+ 
+     // generated from the headset, must always be in the map.
+     key <I264>	{ [	XF86Phone							] };
++    // Some kernel input drivers send KEY_MEDIA from headset button.
++    // Work around by mapping to phone key.
++    key <I234>  { [     XF86Phone                                                       ] };
+ };
+-- 
+1.8.3-rc3
+
