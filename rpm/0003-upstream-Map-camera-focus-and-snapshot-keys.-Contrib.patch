@@ -1,0 +1,40 @@
+From 32c91fae6151e4a849e0d2a89498a65f435bdd17 Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
+Date: Wed, 27 Sep 2017 17:28:25 +0300
+Subject: [PATCH xkeyboard-config 3/4] [upstream] Map camera focus and snapshot
+ keys. Contributes to MER#1817
+
+Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
+---
+ keycodes/evdev         | 2 ++
+ symbols/jolla_vndr/sbj | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/keycodes/evdev b/keycodes/evdev
+index 624ac68..a638205 100644
+--- a/keycodes/evdev
++++ b/keycodes/evdev
+@@ -281,6 +281,8 @@ default xkb_keycodes "evdev" {
+ 	<I251> = 251;	// #define KEY_BRIGHTNESS_CYCLE    243
+ 	<I252> = 252;	// #define KEY_BRIGHTNESS_ZERO     244
+ 	<I253> = 253;	// #define KEY_DISPLAY_OFF         245
++	<I536> = 536;   // #define KEY_CAMERA_FOCUS        528
++	<I774> = 774;   // #define KEY_CAMERA_SNAPSHOT     766 - not in vanilla kernel
+ 
+ 	// Fake keycodes for virtual keys
+ 	<LVL3> =   92;
+diff --git a/symbols/jolla_vndr/sbj b/symbols/jolla_vndr/sbj
+index 16244cf..6c378eb 100644
+--- a/symbols/jolla_vndr/sbj
++++ b/symbols/jolla_vndr/sbj
+@@ -57,4 +57,7 @@ xkb_symbols "common-keys" {
+     // Some kernel input drivers send KEY_MEDIA from headset button.
+     // Work around by mapping to phone key.
+     key <I234>  { [     XF86Phone                                                       ] };
++    // These should be camera focus and camera snapshot, but there are no better symbols available
++    key <I536>  { [     XF86ContrastAdjust                                              ] };
++    key <I774>  { [     XF86WebCam                                                      ] };
+ };
+-- 
+2.24.1
+
