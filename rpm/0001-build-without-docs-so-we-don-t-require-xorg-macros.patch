@@ -1,17 +1,16 @@
-From ccf29588bd4d9d0eb58917bf33166ab92328afe3 Mon Sep 17 00:00:00 2001
+From ad9a1a47089a1b5fa963accd03eabe9dcaa3a0ee Mon Sep 17 00:00:00 2001
 From: Matti Kosola <matti.kosola@jolla.com>
-Date: Fri, 6 Mar 2020 10:34:16 +0200
-Subject: [PATCH xkeyboard-config 1/4] build without docs so we don't require
- xorg macros
+Date: Mon, 2 Mar 2020 15:49:57 +0000
+Subject: [PATCH 1/4] build without docs so we don't require xorg macros
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
 ---
  Makefile.am  |  2 +-
- configure.ac | 11 -----------
- 2 files changed, 1 insertion(+), 12 deletions(-)
+ configure.ac | 12 ------------
+ 2 files changed, 1 insertion(+), 13 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 4cc8254..f2e934e 100644
+index 743610b..88b5a3a 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -1,6 +1,6 @@
@@ -23,12 +22,12 @@ index 4cc8254..f2e934e 100644
  pkgconfigdir = $(datadir)/pkgconfig
  pkgconfig_DATA = xkeyboard-config.pc
 diff --git a/configure.ac b/configure.ac
-index 3c42ad0..833f4f8 100644
+index 2ee71e8..5b8022e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -3,15 +3,6 @@ AC_CONFIG_SRCDIR(rules/base.xml.in)
+@@ -2,16 +2,6 @@ AC_INIT(xkeyboard-config, 2.29)
+ AC_CONFIG_SRCDIR(rules/base.xml)
  AM_INIT_AUTOMAKE([foreign dist-bzip2])
- AM_MAINTAINER_MODE
  
 -# Require X.Org macros 1.12 or later for XORG_WITH_XSLTPROC
 -m4_ifndef([XORG_MACROS_VERSION],
@@ -38,11 +37,12 @@ index 3c42ad0..833f4f8 100644
 -XORG_MANPAGE_SECTIONS
 -XORG_WITH_XSLTPROC
 -AC_PROG_SED
+-AM_PATH_PYTHON([3.0])
 -
  AC_SUBST(VERSION)
  
  AC_ARG_WITH( xkb_base,
-@@ -104,8 +95,6 @@ symbols/sun_vndr/Makefile
+@@ -99,8 +89,6 @@ symbols/sun_vndr/Makefile
  symbols/xfree68_vndr/Makefile
  types/Makefile
  xkeyboard-config.pc
@@ -52,5 +52,5 @@ index 3c42ad0..833f4f8 100644
  
  echo '***********************************************************'
 -- 
-2.24.1
+1.8.3-rc3
 

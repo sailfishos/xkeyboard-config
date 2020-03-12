@@ -1,8 +1,8 @@
-From 59b7e644a30488361de2568e984f40182aa92c6a Mon Sep 17 00:00:00 2001
+From 122645b1356b7e3b161b00bcf1f9ce035552909e Mon Sep 17 00:00:00 2001
 From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
 Date: Fri, 15 Jan 2016 15:48:49 +0200
-Subject: [PATCH xkeyboard-config 2/4] Workaround devices with bad headset
- event on Sailfish. Contributes to JB#33503
+Subject: [PATCH 2/4] Workaround devices with bad headset event on Sailfish.
+ Contributes to JB#33503
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
 ---
@@ -11,7 +11,7 @@ Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
  2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/symbols/inet b/symbols/inet
-index 755597e..a244d6c 100644
+index 049ac18..2aad945 100644
 --- a/symbols/inet
 +++ b/symbols/inet
 @@ -197,7 +197,9 @@ xkb_symbols "evdev" {
@@ -38,5 +38,5 @@ index d2388c3..16244cf 100644
 +    key <I234>  { [     XF86Phone                                                       ] };
  };
 -- 
-2.24.1
+1.8.3-rc3
 

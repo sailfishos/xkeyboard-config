@@ -1,7 +1,7 @@
 Name:       xkeyboard-config
 
 Summary:    Alternative xkb data files
-Version:    2.17
+Version:    2.29
 Release:    1
 License:    MIT
 BuildArch:  noarch
@@ -11,10 +11,11 @@ Patch0:     0001-build-without-docs-so-we-don-t-require-xorg-macros.patch
 Patch3:     0002-Workaround-devices-with-bad-headset-event-on-Sailfis.patch
 Patch4:     0003-upstream-Map-camera-focus-and-snapshot-keys.-Contrib.patch
 Patch5:     0004-sbj-Map-Select-key.-Contributes-to-JB-39965.patch
+BuildRequires:  gettext gettext-devel
+BuildRequires:  libtool
+BuildRequires:  libxslt
 BuildRequires:  perl(XML::Parser)
-BuildRequires:  gettext
-BuildRequires:  intltool
-BuildRequires:  fdupes
+BuildRequires:  pkgconfig(glib-2.0)
 Provides:   xkbdata
 Obsoletes:   xorg-x11-xkbdata
 
@@ -32,10 +33,8 @@ Development files for %{name}.
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
-%autogen --disable-static \
-    --enable-compat-rules \
+%autogen --enable-compat-rules \
     --with-xkb-base=%{_datadir}/X11/xkb \
-    --disable-xkbcomp-symlink \
     --with-xkb-rules-symlink=xorg \
     --disable-runtime-deps
 
@@ -46,22 +45,18 @@ make %{?_smp_mflags}
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
-
-# Bernie: remove locale stuff
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale
+%find_lang %{name}
 
 # Create filelist
 {
-FILESLIST=${PWD}/files.list
-pushd $RPM_BUILD_ROOT
-find ./usr/share/X11 -type d | sed -e "s/^\./%dir /g" > $FILESLIST
-find ./usr/share/X11 -type f | sed -e "s/^\.//g" >> $FILESLIST
-popd
+   FILESLIST=${PWD}/files.list
+   pushd $RPM_BUILD_ROOT
+   find .%{_datadir}/X11/xkb -type d | sed -e "s/^\./%dir /g" > $FILESLIST
+   find .%{_datadir}/X11/xkb -type f | sed -e "s/^\.//g" >> $FILESLIST
+   popd
 }
 
-%fdupes  %{buildroot}//usr/share/X11
-
-%files -f files.list
+%files -f files.list -f %{name}.lang
 %defattr(-,root,root,-)
 %{_datadir}/X11/xkb/rules/xorg
 %{_datadir}/X11/xkb/rules/xorg.lst
