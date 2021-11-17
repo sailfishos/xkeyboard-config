@@ -1,7 +1,7 @@
-From ad9a1a47089a1b5fa963accd03eabe9dcaa3a0ee Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Matti Kosola <matti.kosola@jolla.com>
 Date: Mon, 2 Mar 2020 15:49:57 +0000
-Subject: [PATCH 1/4] build without docs so we don't require xorg macros
+Subject: [PATCH] build without docs so we don't require xorg macros
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
  2 files changed, 1 insertion(+), 13 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 743610b..88b5a3a 100644
+index 44189a4f..82cfe975 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -1,6 +1,6 @@
@@ -22,10 +22,10 @@ index 743610b..88b5a3a 100644
  pkgconfigdir = $(datadir)/pkgconfig
  pkgconfig_DATA = xkeyboard-config.pc
 diff --git a/configure.ac b/configure.ac
-index 2ee71e8..5b8022e 100644
+index e915fccb..e73bcac1 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2,16 +2,6 @@ AC_INIT(xkeyboard-config, 2.29)
+@@ -2,16 +2,6 @@ AC_INIT(xkeyboard-config, 2.34) # change version in meson.build as well
  AC_CONFIG_SRCDIR(rules/base.xml)
  AM_INIT_AUTOMAKE([foreign dist-bzip2])
  
@@ -42,8 +42,8 @@ index 2ee71e8..5b8022e 100644
  AC_SUBST(VERSION)
  
  AC_ARG_WITH( xkb_base,
-@@ -99,8 +89,6 @@ symbols/sun_vndr/Makefile
- symbols/xfree68_vndr/Makefile
+@@ -84,8 +74,6 @@ rules/Makefile
+ symbols/Makefile
  types/Makefile
  xkeyboard-config.pc
 -docs/Makefile
@@ -52,5 +52,5 @@ index 2ee71e8..5b8022e 100644
  
  echo '***********************************************************'
 -- 
-1.8.3-rc3
+2.31.1
 

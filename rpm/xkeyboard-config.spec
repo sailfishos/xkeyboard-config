@@ -1,23 +1,21 @@
 Name:       xkeyboard-config
 
 Summary:    Alternative xkb data files
-Version:    2.29
+Version:    2.34
 Release:    1
 License:    MIT
 BuildArch:  noarch
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 Source0:    %{name}-%{version}.tar.bz2
-Patch0:     0001-build-without-docs-so-we-don-t-require-xorg-macros.patch
-Patch3:     0002-Workaround-devices-with-bad-headset-event-on-Sailfis.patch
-Patch4:     0003-upstream-Map-camera-focus-and-snapshot-keys.-Contrib.patch
-Patch5:     0004-sbj-Map-Select-key.-Contributes-to-JB-39965.patch
+Patch1:     0001-build-without-docs-so-we-don-t-require-xorg-macros.patch
+Patch2:     0002-Workaround-devices-with-bad-headset-event-on-Sailfis.patch
+Patch3:     0003-Map-camera-focus-and-snapshot-keys.-Contributes-to-M.patch
+Patch4:     0004-Map-Select-key.-Contributes-to-JB-39965.patch
 BuildRequires:  gettext gettext-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(glib-2.0)
-Provides:   xkbdata
-Obsoletes:   xorg-x11-xkbdata
 
 %description
 Alternative xkb data files.
@@ -58,6 +56,7 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 
 %files -f files.list -f %{name}.lang
 %defattr(-,root,root,-)
+%license COPYING
 %{_datadir}/X11/xkb/rules/xorg
 %{_datadir}/X11/xkb/rules/xorg.lst
 %{_datadir}/X11/xkb/rules/xorg.xml
