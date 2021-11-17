@@ -1,7 +1,7 @@
-From 122645b1356b7e3b161b00bcf1f9ce035552909e Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
 Date: Fri, 15 Jan 2016 15:48:49 +0200
-Subject: [PATCH 2/4] Workaround devices with bad headset event on Sailfish.
+Subject: [PATCH] Workaround devices with bad headset event on Sailfish.
  Contributes to JB#33503
 
 Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
@@ -11,10 +11,10 @@ Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
  2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/symbols/inet b/symbols/inet
-index 049ac18..2aad945 100644
+index 59811776..f5a07294 100644
 --- a/symbols/inet
 +++ b/symbols/inet
-@@ -197,7 +197,9 @@ xkb_symbols "evdev" {
+@@ -192,7 +192,9 @@ xkb_symbols "evdev" {
      key <I231>   {      [ Cancel                ]       };
      key <I232>   {      [ XF86MonBrightnessDown ]       };
      key <I233>   {      [ XF86MonBrightnessUp   ]       };
@@ -22,11 +22,11 @@ index 049ac18..2aad945 100644
 +// HACK: disabled to allow Jolla layout to define different mapping.
 +// TODO: there's likely a better way to keep this and allow override.
 +//    key <I234>   {      [ XF86AudioMedia        ]       };
-     key <I235>   {      [ XF86Display           ]       };
-     key <I236>   {      [ XF86KbdLightOnOff     ]       }; // KEY_KBDILLUMTOGGLE
-     key <I237>   {      [ XF86KbdBrightnessDown ]       }; // KEY_KBDILLUMDOWN
+ //  key <I235>   {      [ ]                             }; // see <OUTP>
+ //  key <I236>   {      [ ]                             }; // see <KITG>
+ //  key <I237>   {      [ ]                             }; // see <KIDN>
 diff --git a/symbols/jolla_vndr/sbj b/symbols/jolla_vndr/sbj
-index d2388c3..16244cf 100644
+index d2388c39..16244cf5 100644
 --- a/symbols/jolla_vndr/sbj
 +++ b/symbols/jolla_vndr/sbj
 @@ -54,4 +54,7 @@ xkb_symbols "common-keys" {
@@ -38,5 +38,5 @@ index d2388c3..16244cf 100644
 +    key <I234>  { [     XF86Phone                                                       ] };
  };
 -- 
-1.8.3-rc3
+2.31.1
 

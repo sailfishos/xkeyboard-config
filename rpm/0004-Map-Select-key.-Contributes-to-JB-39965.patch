@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Joona Petrell <joona.petrell@jollamobile.com>
+Date: Tue, 3 Oct 2017 17:12:08 +0300
+Subject: [PATCH] Map Select key. Contributes to JB#39965
+
+Signed-off-by: Matti Kosola <matti.kosola@jolla.com>
+---
+ symbols/jolla_vndr/sbj | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/symbols/jolla_vndr/sbj b/symbols/jolla_vndr/sbj
+index 6c378eb9..dd7f31e6 100644
+--- a/symbols/jolla_vndr/sbj
++++ b/symbols/jolla_vndr/sbj
+@@ -60,4 +60,5 @@ xkb_symbols "common-keys" {
+     // These should be camera focus and camera snapshot, but there are no better symbols available
+     key <I536>  { [     XF86ContrastAdjust                                              ] };
+     key <I774>  { [     XF86WebCam                                                      ] };
++    key <I361>  { [     Select                                                          ] };
+ };
+-- 
+2.31.1
+
