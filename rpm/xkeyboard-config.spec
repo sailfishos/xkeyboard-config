@@ -1,18 +1,17 @@
 Name:       xkeyboard-config
 
 Summary:    Alternative xkb data files
-Version:    2.34
+Version:    2.37
 Release:    1
 License:    MIT
 BuildArch:  noarch
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 Source0:    %{name}-%{version}.tar.bz2
-Patch1:     0001-build-without-docs-so-we-don-t-require-xorg-macros.patch
-Patch2:     0002-Workaround-devices-with-bad-headset-event-on-Sailfis.patch
-Patch3:     0003-Map-camera-focus-and-snapshot-keys.-Contributes-to-M.patch
-Patch4:     0004-Map-Select-key.-Contributes-to-JB-39965.patch
+Patch1:     0001-Workaround-devices-with-bad-headset-event-on-Sailfis.patch
+Patch2:     0002-Map-camera-focus-and-snapshot-keys.-Contributes-to-M.patch
+Patch3:     0003-Map-Select-key.-Contributes-to-JB-39965.patch
+BuildRequires:  meson
 BuildRequires:  gettext gettext-devel
-BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -31,15 +30,11 @@ Development files for %{name}.
 %autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
-%autogen --enable-compat-rules \
-    --with-xkb-base=%{_datadir}/X11/xkb \
-    --with-xkb-rules-symlink=xorg \
-    --disable-runtime-deps
-
-make %{?_smp_mflags}
+%meson -Dcompat-rules=true -Dxorg-rules-symlinks=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
@@ -60,6 +55,7 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 %{_datadir}/X11/xkb/rules/xorg
 %{_datadir}/X11/xkb/rules/xorg.lst
 %{_datadir}/X11/xkb/rules/xorg.xml
+%exclude %{_mandir}/man7/xkeyboard-config.*
 
 %files devel
 %defattr(-,root,root,-)
