@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Perttu Pohjonen <perttu.pohjonen@jolla.com>
+Date: Wed, 10 Sep 2026 12:00:00 +0300
+Subject: [PATCH] Map the keypad star and pound keys to asterisk and numbersign
+
+A 12-key keypad (Callback) emits KEY_NUMERIC_STAR (522) and
+KEY_NUMERIC_POUND (523). inet(evdev) binds them to XF86NumericStar and
+XF86NumericPound, which Qt has no key for, so the keys arrive as
+Key_unknown and are dropped. The rules append inet(evdev) after the
+jollasbj vendor symbols, so a binding in sbj(common-keys) loses; offer it
+as the option jolla:keypad instead, which the rules append last, and let a
+device that has such a keypad select it.
+---
+ rules/0042-o_s.part    | 1 +
+ symbols/jolla_vndr/sbj | 9 +++++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/rules/0042-o_s.part b/rules/0042-o_s.part
+--- a/rules/0042-o_s.part
++++ b/rules/0042-o_s.part
+@@ -1,4 +1,5 @@
+ ! option		=	symbols
++  jolla:keypad		=	+jolla_vndr/sbj(keypad)
+   altwin:menu		=	+altwin(menu)
+   altwin:menu_win	=	+altwin(menu_win)
+   altwin:meta_alt	=	+altwin(meta_alt)
+diff --git a/symbols/jolla_vndr/sbj b/symbols/jolla_vndr/sbj
+--- a/symbols/jolla_vndr/sbj
++++ b/symbols/jolla_vndr/sbj
+@@ -61,3 +61,12 @@ xkb_symbols "common-keys" {
+     // Map Xperia 10 III assistant key to camera key
+     key <I465>  { [     XF86WebCam                                                      ] };
+ };
++
++// 12-key keypad: KEY_NUMERIC_STAR (522) and KEY_NUMERIC_POUND (523). Selected
++// as the option jolla:keypad so it is appended after inet(evdev), which binds
++// them to XF86NumericStar and XF86NumericPound that Qt cannot use.
++partial hidden alphanumeric_keys
++xkb_symbols "keypad" {
++    key <I530>  { [     asterisk                                                        ] };
++    key <I531>  { [     numbersign                                                      ] };
++};
