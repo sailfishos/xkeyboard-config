@@ -12,6 +12,7 @@ Patch2:     0002-Map-camera-focus-and-snapshot-keys.-Contributes-to-M.patch
 Patch3:     0003-Map-Select-key.-Contributes-to-JB-39965.patch
 Patch4:     0004-Map-Xperia-10-III-assistant-button-to-camera.patch
 Patch5:     0005-Map-the-keypad-star-and-pound-keys-to-asterisk-and-numbersign.patch
+Patch6:     0006-Map-the-Callback-function-keys-and-its-back-button.patch
 BuildRequires:  meson
 BuildRequires:  gettext gettext-devel
 BuildRequires:  libxslt
