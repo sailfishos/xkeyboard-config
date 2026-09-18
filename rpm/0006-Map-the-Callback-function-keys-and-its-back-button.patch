@@ -1,0 +1,56 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Perttu Pohjonen <perttu.pohjonen@jolla.com>
+Date: Mon, 15 Sep 2026 12:00:00 +0300
+Subject: [PATCH] Map the Callback function keys and its back button
+
+The Callback has three function keys beside the keypad and a button on its
+back, emitting KEY_F21 (191) through KEY_F24 (194). inet(evdev) binds F21
+to F23 to XF86TouchpadToggle, XF86TouchpadOn and XF86TouchpadOff, which Qt
+has no key for, so they arrive as Key_unknown and are dropped; F24 is left
+unbound. The rules append inet(evdev) after the jollasbj vendor symbols, so
+a binding in sbj(common-keys) loses; offer it as the option jolla:fnkeys
+instead, which the rules append last, and let a device that has these keys
+select it.
+
+The middle of the three is the launcher key, and it is bound to
+XF86HomePage rather than to F22: Qt maps that to Key_HomePage, which the
+home screen already listens for, so the launcher works without a key of its
+own and without a code change.
+---
+ rules/0042-o_s.part    |  1 +
+ symbols/jolla_vndr/sbj | 18 ++++++++++++++++++
+ 2 files changed, 19 insertions(+)
+
+--- a/rules/0042-o_s.part
++++ b/rules/0042-o_s.part
+@@ -1,5 +1,6 @@
+ ! option		=	symbols
+   jolla:keypad		=	+jolla_vndr/sbj(keypad)
++  jolla:fnkeys		=	+jolla_vndr/sbj(fnkeys)
+   altwin:menu		=	+altwin(menu)
+   altwin:menu_win	=	+altwin(menu_win)
+   altwin:meta_alt	=	+altwin(meta_alt)
+--- a/symbols/jolla_vndr/sbj
++++ b/symbols/jolla_vndr/sbj
+@@ -70,3 +70,21 @@
+     key <I530>  { [     asterisk                                                        ] };
+     key <I531>  { [     numbersign                                                      ] };
+ };
++
++// The Callback's three function keys and the button on its back emit KEY_F21
++// through KEY_F24. inet(evdev) binds F21 to F23 to XF86TouchpadToggle, On and
++// Off, which Qt has no key for, so they arrive as Key_unknown and are dropped,
++// and F24 is left unbound. As with the keypad above, the rules append
++// inet(evdev) after the vendor symbols, so this is offered as an option --
++// options are appended last -- and a device with these keys selects it.
++//
++// The launcher key is bound to XF86HomePage rather than to F22, because that
++// is the key the home screen already listens for: the launcher then needs no
++// key of its own and no code change.
++partial hidden function_keys
++xkb_symbols "fnkeys" {
++    key <FK21>  { [     F21                                                             ] };
++    key <FK22>  { [     XF86HomePage                                                    ] };
++    key <FK23>  { [     F23                                                             ] };
++    key <FK24>  { [     F24                                                             ] };
++};
