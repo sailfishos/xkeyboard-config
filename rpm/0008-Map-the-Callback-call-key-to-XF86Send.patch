@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Perttu Pohjonen <perttu.pohjonen@jolla.com>
+Date: Mon, 27 Oct 2026 09:00:00 +0200
+Subject: [PATCH] Map the Callback call key to XF86Send
+
+The Callback's call key emits KEY_PHONE (169), which inet(evdev) binds to
+XF86Phone. sbj(common-keys) gives the headset button the same keysym, so both
+arrive as Qt's Key_ToggleCallHangup and nothing can tell them apart: a media
+player holding the headset buttons takes the call key with it and the music
+pauses instead of the dialer opening.
+
+XF86Send is unbound and qtwayland maps it to Key_Call, the key the dialer
+already answers to. The rules append inet(evdev) after the vendor symbols, so
+as with the keypad and the function keys this is offered as an option, which
+the rules append last, and a device with a call key selects it.
+---
+ rules/0042-o_s.part    |  1 +
+ symbols/jolla_vndr/sbj | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
+
+--- a/rules/0042-o_s.part
++++ b/rules/0042-o_s.part
+@@ -1,6 +1,7 @@
+ ! option		=	symbols
+   jolla:keypad		=	+jolla_vndr/sbj(keypad)
+   jolla:fnkeys		=	+jolla_vndr/sbj(fnkeys)
++  jolla:callkey		=	+jolla_vndr/sbj(callkey)
+   altwin:menu		=	+altwin(menu)
+   altwin:menu_win	=	+altwin(menu_win)
+   altwin:meta_alt	=	+altwin(meta_alt)
+--- a/symbols/jolla_vndr/sbj
++++ b/symbols/jolla_vndr/sbj
+@@ -88,3 +88,11 @@
+     key <FK23>  { [     F23                                                             ] };
+     key <FK24>  { [     F24                                                             ] };
+ };
++
++// The call key, KEY_PHONE, gets XF86Phone from inet(evdev), the keysym the headset
++// button carries too, so the two cannot be told apart. XF86Send maps to Qt's call key.
++// An option, as above, so the rules append it after inet.
++partial hidden alphanumeric_keys
++xkb_symbols "callkey" {
++    key <I177>  { [     XF86Send                                                        ] };
++};

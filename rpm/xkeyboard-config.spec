@@ -14,6 +14,7 @@ Patch4:     0004-Map-Xperia-10-III-assistant-button-to-camera.patch
 Patch5:     0005-Map-the-keypad-star-and-pound-keys-to-asterisk-and-numbersign.patch
 Patch6:     0006-Map-the-Callback-function-keys-and-its-back-button.patch
 Patch7:     0007-Stop-the-keypad-keys-repeating.patch
+Patch8:     0008-Map-the-Callback-call-key-to-XF86Send.patch
 BuildRequires:  meson
 BuildRequires:  gettext gettext-devel
 BuildRequires:  libxslt
